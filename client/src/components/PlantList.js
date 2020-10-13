@@ -2,23 +2,23 @@ import React, { Component } from "react";
 import axios from "axios";
 
 export default class PlantList extends Component {
-   constructor(){
-     super();
-     this.state = {
-       plants: []
-     };
-   }
+  constructor() {
+    super();
+    this.state = {
+      plants: [],
+    };
+  }
 
-   componentDidMount() {
-     console.log("CDM running");
-     axios
-     .get(`http://localhost:3333/plants`)
-     .then((res) => {
-       this.setState({ plants: res.data.plantData });
-       console.log(this.state);
-     })
-     .catch((err) => console.log("Axios Err",err));
-    }
+  componentDidMount() {
+    axios
+      .get("http://localhost:3333/plants")
+      .then((res) => {
+        this.setState({
+          plants: res.data.plantsData,
+        });
+      })
+      .catch((err) => console.log(err.message));
+  }
 
   /*********  DON'T CHANGE ANYTHING IN THE RENDER FUNCTION *********/
   render() {
